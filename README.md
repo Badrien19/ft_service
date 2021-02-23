@@ -35,9 +35,15 @@ minikube service wordpress --url -> Get the URL for wordpress
 kubectl delete -k ./ -> /!\ Undo "kubectl apply -k ./"
 
 # ressourses
+
 ----geting stated----
+
 https://harm-smits.github.io/42docs/projects/ft_services
+
 ----install minikube----
+
 https://minikube.sigs.k8s.io/docs/start/
+
 ----install wordpress & mysql----
+
 https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
