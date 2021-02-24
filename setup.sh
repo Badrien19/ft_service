@@ -6,13 +6,22 @@ echo "
 |_|  \__|___|___/\___|_|    \_/ |_|\___\___||___/
                                
 "
-echo "____Starting Minikube____"
+echo "
+____Starting Minikube____
+"
 
 minikube start
-# kubectl get po -A 
+minikube kubectl -- get po -A
 
-echo "____Configuring Metallb____"
+echo "
+____Configuring Metallb____
+"
 
 # Metallb config:
 kubectl apply -f srcs/metallb/metallb.yaml
 kubectl create -f srcs/metallb/configmap.yaml
+
+echo "
+____Building dockers____
+"
+docker build -t service_wordpress ./srcs/wordpress
