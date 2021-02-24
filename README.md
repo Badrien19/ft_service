@@ -1,6 +1,6 @@
 # FT_SERVICE
 
-## Minikube
+mini## Minikube
 minikube start
 
 kubectl get po -A -> Access to the cluster
