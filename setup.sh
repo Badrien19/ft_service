@@ -14,5 +14,5 @@ minikube start
 echo "____Configuring Metallb____"
 
 # Metallb config:
-kubectl apply -f ./metallb/metallb.yaml
-kubectl create -f ./metallb/configmap.yaml
+kubectl apply -f srcs/metallb/metallb.yaml
+kubectl create -f srcs/metallb/configmap.yaml
