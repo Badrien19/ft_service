@@ -68,5 +68,9 @@ https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persis
 
 https://www.metricfire.com/blog/deploying-grafana-to-kubernetes/?GAID=1300009325.1613665265
 
+----liveness----
+
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
