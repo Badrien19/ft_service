@@ -1,0 +1,9 @@
+FROM alpine:3.12
+
+RUN apk update && apk add nginx
+
+RUN mkdir -p /run/nginx
+
+CMD nginx -g "daemon off;"
+
+EXPOSE 80 443

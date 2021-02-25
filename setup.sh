@@ -10,7 +10,8 @@ echo "
 ____Starting Minikube____
 "
 
-minikube start
+minikube delete
+minikube start --vm-driver=docker
 minikube kubectl -- get po -A
 
 echo "
@@ -18,10 +19,24 @@ ____Configuring Metallb____
 "
 
 # Metallb config:
-kubectl apply -f srcs/metallb/metallb.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+
+# On first install only
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
+#kubectl apply -f srcs/metallb/metallb.yaml
 kubectl create -f srcs/metallb/configmap.yaml
+
+eval $(minikube docker-env)
 
 echo "
 ____Building dockers____
 "
-docker build -t service_wordpress ./srcs/wordpress
+#docker build -t service_wordpress ./srcs/wordpress
+docker build -t service_nginx ./srcs/nginx
+
+kubectl create -f ./srcs/nginx/nginx.yaml
+
+minikube dashboard
