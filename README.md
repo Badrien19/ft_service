@@ -78,4 +78,5 @@ CTRL+Maj+V to preview README in VS Code
 /!\ IMPORTANT if you are using the school VM, first give you permission to use docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
+Help : https://docs.docker/engine/install/ubuntu
 then shutdown VirtualBox and restart /!\
