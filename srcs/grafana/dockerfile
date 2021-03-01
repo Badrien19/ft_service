@@ -1,0 +1,15 @@
+FROM alpine:3.13
+
+# User=admin ; Password=password
+
+RUN apk upgrade && apk add grafana grafana-openrc
+
+RUN apk add --no-cache supervisor
+
+RUN mkdir -p /var/log/supervisor
+
+COPY ./supervisord.conf /etc/
+
+EXPOSE 3000
+
+CMD supervisord
