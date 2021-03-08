@@ -30,7 +30,7 @@ kubectl create -f srcs/metallb/configmap.yaml
 
 echo "\n\033[033mBuilding dockers\033[00m\n"
 
-#docker build -t service_wordpress ./srcs/wordpress
+docker build -t service_wordpress ./srcs/wordpress
 docker build -t service_nginx ./srcs/nginx
 docker build -t service_grafana ./srcs/grafana
 
@@ -42,6 +42,7 @@ echo "\n\033[033mImporting config files\033[00m\n"
 
 kubectl create -f ./srcs/nginx/nginx.yaml
 kubectl create -f ./srcs/grafana/grafana.yaml
+kubectl create -f ./srcs/wordpress/wordpress.yaml
 
 
 
