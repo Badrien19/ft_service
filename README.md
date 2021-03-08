@@ -75,6 +75,8 @@ https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-read
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
 
+sudo service network-manager restart
+
 /!\ IMPORTANT if you are using the school VM, first give you permission to use docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
