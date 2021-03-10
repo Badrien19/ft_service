@@ -72,6 +72,13 @@ https://www.metricfire.com/blog/deploying-grafana-to-kubernetes/?GAID=1300009325
 
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 
+## TODO
+
+# Wordpress
+- Storage persistent
+- Lier la base de donnée
+- Vérifier pour nginx
+
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
 
