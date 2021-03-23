@@ -43,9 +43,10 @@ kubectl create secret generic admin --from-literal=user="admin" --from-literal=p
 echo "\n\033[033mImporting config files\033[00m\n"
 
 kubectl create -f ./srcs/nginx/nginx.yaml
+kubectl create -f ./srcs/phpmyadmin/phpmyadmin.yaml
 kubectl create -f ./srcs/grafana/grafana.yaml
 kubectl create -f ./srcs/mysql/mysql.yaml
 kubectl create -f ./srcs/wordpress/wordpress.yaml
-kubectl create -f ./srcs/phpmyadmin/phpmyadmin.yaml
+
 
 minikube dashboard

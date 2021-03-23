@@ -7,11 +7,55 @@ metadata:
   labels:
     run: mysql
 spec:
-  type: LoadBalancer
-  selector:
-    run: mysql
+  type: ClusterIP
   ports:
-  - name: sql-port
+  - name: http
     protocol: TCP
     port: 3306
-    targetPort: 3306
+  selector:
+    run: mysql
+---
+apiVersion: v1
+kind: StatefulSet
+metadata:
+  name: mysql
+    labels:
+      run: mysql
+  specs:
+    serviceName: mysql
+    replicas: 1
+    selector:
+      matchLabels:
+        run: mysql
+      template:
+        metadata:
+          labels:
+            run: mysql
+        spec:
+          containers:
+          - name: mysql
+            image: service_mysql
+            imagePullPolicy: Never
+            env:
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-id
+                  key: name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-id
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-id
+                  key: password
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-id
+                  key: host
+            ports:
+            - containerPort: 3306
