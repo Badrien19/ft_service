@@ -72,6 +72,10 @@ https://www.metricfire.com/blog/deploying-grafana-to-kubernetes/?GAID=1300009325
 
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 
+----Install phpmyadmin----
+
+https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/
+
 ## TODO
 
 # Wordpress

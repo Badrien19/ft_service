@@ -1,0 +1,52 @@
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: phpmyadmin
+      annotations:
+        metallb.universe.tf/allow-shared-ip: minikube
+      labels:
+        run: phpmyadmin
+    spec:
+      type: LoadBalancer
+      selector:
+        run: phpmyadmin
+      ports:
+      - name: https
+        port: 5000
+        targetPort: 5000
+---
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: phpmyadmin
+      labels:
+        run: phpmyadmin
+    spec:
+      serviceName: phpmyadmin
+      replicas: 1
+      selector:
+        matchLabels:
+          run: phpmyadmin
+      template:
+        metadata:
+          labels:
+            run: phpmyadmin
+        spec:
+          containers:
+            - name: phpmyadmin
+              image: service_phpmyadmin
+              imagePullPolicy: Never
+              ports:
+                - containerPort: 5000
+                  name: https
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phpmyadmin-http-ingress
+spec:
+  backend:
+    serviceName: service-phpmyadmin
+    servicePort: 5000
+    

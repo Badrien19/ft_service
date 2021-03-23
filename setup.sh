@@ -33,6 +33,7 @@ echo "\n\033[033mBuilding dockers\033[00m\n"
 docker build -t service_wordpress ./srcs/wordpress
 docker build -t service_nginx ./srcs/nginx
 docker build -t service_grafana ./srcs/grafana
+docker build -t service_phpmyadmin ./srcs/phpmyadmin
 
 echo "\n\033[033mGenerating secrets\033[00m\n"
 
@@ -43,7 +44,6 @@ echo "\n\033[033mImporting config files\033[00m\n"
 kubectl create -f ./srcs/nginx/nginx.yaml
 kubectl create -f ./srcs/grafana/grafana.yaml
 kubectl create -f ./srcs/wordpress/wordpress.yaml
-
-
+kubectl create -f ./srcs/phpmyadmin/phpmyadmin.yaml
 
 minikube dashboard
