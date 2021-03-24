@@ -93,3 +93,16 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 Help : https://docs.docker/engine/install/ubuntu
 then shutdown VirtualBox and restart /!\
+
+
+## TIPS FOR BADRIEN
+
+minikube start --vm-driver=virtualbox
+
+If you can't reach web page (not dashboard)
+->minukube ip
+192.168.49.2
+
+change in metaldb configmap.yaml last two line
+addresses:
+    - 192.168.49.10-192.168.49.20
