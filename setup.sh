@@ -30,10 +30,15 @@ kubectl create -f srcs/metallb/configmap.yaml
 
 echo "\n\033[033mBuilding dockers\033[00m\n"
 
+echo "\033[1;34m[Wordpress]\033[00m"
 docker build -t service_wordpress ./srcs/wordpress
+echo "\n\033[1;34m[Nginx]\033[00m"
 docker build -t service_nginx ./srcs/nginx
+echo "\n\033[1;34m[Grafana]\033[00m"
 docker build -t service_grafana ./srcs/grafana
+echo "\n\033[1;34m[Mysql]\033[00m"
 docker build -t service_mysql ./srcs/mysql
+echo "\n\033[1;34m[Phpmyadmin]\033[00m"
 docker build -t service_phpmyadmin ./srcs/phpmyadmin
 
 echo "\n\033[033mGenerating secrets\033[00m\n"
