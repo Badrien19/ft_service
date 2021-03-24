@@ -78,10 +78,23 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 
 ## TODO
 
+# ALL
+- Implémenter InfluxDB
+
+# Nginx
+- Vérifier pour le port 443
+
 # Wordpress
 - Storage persistent
 - Lier la base de donnée
 - Vérifier pour nginx
+
+# Mysql
+- Storage persistent
+- Lier à phpmyadmin
+
+# Grafana
+- Lier à InfluxDB
 
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
