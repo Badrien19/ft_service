@@ -1,8 +1,8 @@
-FROM alpine:3.13
+FROM alpine:3.12
 
 # User=admin ; Password=password
 
-RUN apk upgrade && apk add grafana grafana-openrc
+RUN apk add grafana --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
 RUN apk add --no-cache supervisor
 
