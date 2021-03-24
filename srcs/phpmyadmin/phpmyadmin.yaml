@@ -1,52 +1,51 @@
----
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: phpmyadmin
-      annotations:
-        metallb.universe.tf/allow-shared-ip: minikube
-      labels:
-        run: phpmyadmin
-    spec:
-      type: LoadBalancer
-      selector:
-        run: phpmyadmin
-      ports:
-      - name: https
-        port: 5000
-        targetPort: 5000
----
-    apiVersion: apps/v1
-    kind: StatefulSet
-    metadata:
-      name: phpmyadmin
-      labels:
-        run: phpmyadmin
-    spec:
-      serviceName: phpmyadmin
-      replicas: 1
-      selector:
-        matchLabels:
-          run: phpmyadmin
-      template:
-        metadata:
-          labels:
-            run: phpmyadmin
-        spec:
-          containers:
-            - name: phpmyadmin
-              image: service_phpmyadmin
-              imagePullPolicy: Never
-              ports:
-                - containerPort: 5000
-                  name: https
----
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: phpmyadmin-http-ingress
+  name: phpmyadmin
+  annotations:
+    metallb.universe.tf/allow-shared-ip: minikube
+  labels:
+    run: phpmyadmin
 spec:
-  backend:
-    serviceName: service-phpmyadmin
-    servicePort: 5000
-    
+  type: LoadBalancer
+  selector:
+    run: phpmyadmin
+  ports:
+  - name: https
+    port: 5000
+    targetPort: 5000
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: phpmyadmin
+  labels:
+    run: phpmyadmin
+spec:
+  serviceName: phpmyadmin
+  replicas: 1
+  selector:
+    matchLabels:
+      run: phpmyadmin
+  template:
+    metadata:
+      labels:
+        run: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: service_phpmyadmin
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+              name: https
+          env:
+            - name: PMA_HOST
+              value: service_mysql
+            - name: PMA_PORT
+              value: "3306"
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: root-password
