@@ -40,12 +40,26 @@ spec:
             - containerPort: 5000
               name: https
           env:
-            - name: PMA_HOST
-              value: service_mysql
-            - name: PMA_PORT
-              value: "3306"
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secrets
-                  key: root-password
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: db-id
+                key: name
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-id
+                key: user
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-id
+                key: password
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: db-id
+                key: host
+          ports:
+          - containerPort: 5000
+            name: phpmyadmin

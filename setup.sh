@@ -42,9 +42,17 @@ docker build -t service_mysql ./srcs/mysql
 echo "\n\033[1;34m[Phpmyadmin]\033[00m"
 docker build -t service_phpmyadmin ./srcs/phpmyadmin
 
+
+DB_NAME=BOURDANNE_DBs; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql;
+
 echo "\n\033[033mGenerating secrets\033[00m\n"
 
-kubectl create secret generic admin --from-literal=user="admin" --from-literal=password="password"
+kubectl create secret generic db-id \
+	--from-literal=name=${DB_NAME} \
+	--from-literal=user=${DB_USER} \
+	--from-literal=password=${DB_PASSWORD} \
+	--from-literal=host=${DB_HOST}l
+
 
 echo "\n\033[033mImporting config files\033[00m\n"
 
