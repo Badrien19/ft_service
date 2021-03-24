@@ -10,6 +10,7 @@ echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
 minikube start --vm-driver=docker
+#minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
 #minikube kubectl -- get po -A
