@@ -1,9 +1,10 @@
-FROM alpine:3.12
+FROM    alpine:3.12
 
-RUN apk update && apk add nginx
+RUN     apk update && apk add nginx
 
-RUN mkdir -p /run/nginx
+RUN     apk add openssl 
 
-CMD nginx -g "daemon off;"
-
-EXPOSE 80 443
+RUN     mkdir -p /etc/nginx/ssl/ && mkdir /run/nginx
+RUN     openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/localhost.pem -keyout /etc/nginx/ssl/localhost.key -subj "/C=BE/ST=Bruxelles/L=Bruxelles/O=19 School/OU=Bourdanne/CN=localhost"
+COPY    nginx.conf /etc/nginx/
+CMD     nginx -g "daemon off;"

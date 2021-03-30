@@ -80,21 +80,20 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 
 # ALL
 - Implémenter InfluxDB
+- Implémenter serveur ftps
 
 # Nginx
 - Vérifier pour le port 443
 
 # Wordpress
-- Storage persistent
-- Lier la base de donnée
-- Vérifier pour nginx
+
 
 # Mysql
-- Storage persistent
-- Lier à phpmyadmin
+
 
 # Grafana
 - Lier à InfluxDB
+- Grafana ne fonctionne plus (version d alpine ?)
 
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
