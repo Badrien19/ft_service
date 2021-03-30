@@ -52,3 +52,7 @@ spec:
         ports:
         - containerPort: 5050
           name: https
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-pv-claim
