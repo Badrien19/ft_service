@@ -5,7 +5,6 @@ RUN     apk update \
         && apk add --no-cache mysql mysql-client
 
 RUN     mkdir -p /run/mysqld
-
 COPY    my.cnf /etc/
 COPY    setup.sh /tmp
 COPY    wordpress.sql init_file /tmp/
