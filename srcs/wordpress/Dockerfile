@@ -3,7 +3,7 @@ FROM    alpine:3.12
 RUN     apk update 
 RUN     apk add --no-cache supervisor
 RUN     apk add wget nginx && apk add openssl \
-	    && apk add php7-fpm
+	    && apk add php7 php7-opcache php7-gd php7-zlib php7-fpm php7-common php7-session php7-iconv php7-curl php7-mbstring php7-json php7-xml php7-mysqli
 
 #       Wordpress
 RUN     mkdir -p /var/www/localhost
