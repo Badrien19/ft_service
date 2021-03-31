@@ -30,6 +30,8 @@ echo "\n\033[033mBuilding dockers\033[00m\n"
 
 echo "\033[1;34m[Wordpress]\033[00m"
 docker build -t service_wordpress ./srcs/wordpress
+echo "\033[1;34m[Influxdb]\033[00m"
+docker build -t service_influxdb ./srcs/influxdb
 echo "\n\033[1;34m[Nginx]\033[00m"
 docker build -t service_nginx ./srcs/nginx
 echo "\n\033[1;34m[Grafana]\033[00m"
@@ -58,6 +60,7 @@ kubectl create -f ./srcs/phpmyadmin/phpmyadmin.yaml
 kubectl create -f ./srcs/grafana/grafana.yaml
 kubectl create -f ./srcs/mysql/mysql.yaml
 kubectl create -f ./srcs/wordpress/wordpress.yaml
+kubectl create -f ./srcs/influxdb/influxdb.yaml
 
 
 minikube dashboard
