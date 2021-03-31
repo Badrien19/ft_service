@@ -1,13 +1,12 @@
-FROM alpine
+FROM alpine:3.12
 
 # User=admin ; Password=password
 
 RUN apk add grafana --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
 
+# Supervisor
 RUN apk add --no-cache supervisor
-
 RUN mkdir -p /var/log/supervisor
-
 COPY ./supervisord.conf /etc/
 
 EXPOSE 3000

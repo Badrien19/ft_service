@@ -36,16 +36,5 @@ spec:
       - name: grafana
         image: service_grafana
         imagePullPolicy: Never
-        env:
-        - name: GRAF_USER
-          valueFrom:
-            secretKeyRef:
-              name: admin
-              key: user
-        - name: GRAF_PASS
-          valueFrom:
-            secretKeyRef:
-              name: admin
-              key: password
         ports:
         - containerPort: 3000
