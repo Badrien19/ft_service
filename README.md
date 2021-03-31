@@ -79,11 +79,9 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 ## TODO
 
 # ALL
-- Implémenter InfluxDB
 - Implémenter serveur ftps
 
 # Nginx
-- Vérifier pour le port 443
 
 # Wordpress
 
@@ -94,6 +92,7 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 # Grafana
 - Lier à InfluxDB
 - Grafana ne fonctionne plus (version d alpine ?)
+-install telegraf
 
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
