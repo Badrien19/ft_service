@@ -44,9 +44,15 @@ spec:
   - name: ftps00
     port: 40000
     protocol: TCP
+  - name: ftps01
+    port: 20000
+    protocol: TCP
+  - name: ftps02
+    port: 50000
+    protocol: TCP
 ---
 apiVersion: apps/v1
-kind: Statefulset
+kind: StatefulSet
 metadata:
   name: ftps
   labels:
@@ -71,10 +77,14 @@ spec:
           name: ftps
         - containerPort: 40000
           name: ftps00
+        - containerPort: 20000
+          name: ftps01
+        - containerPort: 50000
+          name: ftps02
         volumeMounts:
         - mountPath: "/mnt/ftp"
           name: ftps-pv-storage
-        volumes:
-        - name: ftps-pv-storage
-          persistentVolumeClaim:
-            claimName: ftps-pv-claim
+      volumes:
+      - name: ftps-pv-storage
+        persistentVolumeClaim:
+          claimName: ftps-pv-claim
