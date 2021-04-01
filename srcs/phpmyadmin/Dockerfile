@@ -16,6 +16,8 @@ RUN     mkdir -p /etc/nginx/ssl/
 RUN     openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/localhost.pem -keyout /etc/nginx/ssl/localhost.key -subj "/C=BE/ST=Bruxelles/L=Bruxelles/O=19 School/OU=Bourdanne/CN=localhost"
 COPY    nginx.conf /etc/nginx/conf.d/localhost.conf
 RUN     rm /etc/nginx/conf.d/default.conf
+RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY    telegraf.conf /etc/telegraf.conf
 
 #       Supervisor
 RUN     mkdir -p /var/log/supervisor

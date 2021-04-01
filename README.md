@@ -81,29 +81,24 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 # ALL
 - Implémenter serveur ftps
 
-# Nginx
-
-# Wordpress
-
-
-# Mysql
-
-
 # Grafana
 - Lier à InfluxDB
-- Grafana ne fonctionne plus (version d alpine ?)
--install telegraf
+- install telegraf
 
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
 
 sudo service network-manager restart
 
-/!\ IMPORTANT if you are using the school VM, first give you permission to use docker
+/!\ 
+IMPORTANT 
+if you are using the school VM, first give you permission to use docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
+then shutdown VirtualBox and restart
+Don't forget to give at least 3 CPU to VirtualBox.
 Help : https://docs.docker/engine/install/ubuntu
-then shutdown VirtualBox and restart /!\
+/!\
 
 
 ## TIPS FOR BADRIEN
