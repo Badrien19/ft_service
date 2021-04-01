@@ -9,4 +9,4 @@ providers:
   disableDeletion: true
   editable: false
   options:
-    path: /usr/share/grafana/conf/provisioning/dashboards
+    path: /etc/grafana/provisioning/dashboards/
