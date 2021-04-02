@@ -81,10 +81,6 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 # ALL
 - Implémenter serveur ftps
 
-# Grafana
-- install telegraf
-- lier les .json au dashboard
-
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
 
