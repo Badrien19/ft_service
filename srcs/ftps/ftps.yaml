@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: ftps-service
   annotations:
-    metallb.universe.tf/allow-share-ip: minikube
+    metallb.universe.tf/allow-shared-ip: minikube
   labels:
     run: ftps
 spec:
