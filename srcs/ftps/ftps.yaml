@@ -55,6 +55,3 @@ spec:
           name: ftps01
         - containerPort: 50000
           name: ftps02
-        volumeMounts:
-        - mountPath: "/mnt/ftp"
-          name: ftps-pv-storage
