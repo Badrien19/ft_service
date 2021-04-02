@@ -28,19 +28,19 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 
 echo "\n\033[033mBuilding dockers\033[00m\n"
 
-echo "\033[1;34m[Wordpress]\033[00m"
+echo "\033[1;34m1/7 [Wordpress]\033[00m"
 docker build -t service_wordpress ./srcs/wordpress
-echo "\n\033[1;34m[Influxdb]\033[00m"
+echo "\n\033[1;34m2/7 [Influxdb]\033[00m"
 docker build -t service_influxdb ./srcs/influxdb
-echo "\n\033[1;34m[Nginx]\033[00m"
+echo "\n\033[1;34m3/7 [Nginx]\033[00m"
 docker build -t service_nginx ./srcs/nginx
-echo "\n\033[1;34m[Grafana]\033[00m"
+echo "\n\033[1;34m4/7 [Grafana]\033[00m"
 docker build -t service_grafana ./srcs/grafana
-echo "\n\033[1;34m[Mysql]\033[00m"
+echo "\n\033[1;34m5/7 [Mysql]\033[00m"
 docker build -t service_mysql ./srcs/mysql
-echo "\n\033[1;34m[Phpmyadmin]\033[00m"
+echo "\n\033[1;34m6/7 [Phpmyadmin]\033[00m"
 docker build -t service_phpmyadmin ./srcs/phpmyadmin
-echo "\n\033[1;34m[FTPS]\033[00m"
+echo "\n\033[1;34m7/7 [FTPS]\033[00m"
 docker build -t service_ftps ./srcs/ftps
 
 DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql;
