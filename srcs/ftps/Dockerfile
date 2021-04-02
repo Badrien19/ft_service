@@ -25,6 +25,10 @@ RUN     apk add --no-cache supervisor
 RUN     mkdir -p /var/log/supervisor
 COPY    ./supervisord.conf /etc/
 
+#        telegraf
+RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY telegraf.conf /etc/telegraf.conf
+
 EXPOSE  21 40000
 
 CMD     supervisord -c /etc/supervisord.conf
