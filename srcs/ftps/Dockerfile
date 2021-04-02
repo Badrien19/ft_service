@@ -35,6 +35,6 @@ COPY    ./supervisord.conf /etc/
 RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 COPY    telegraf.conf /etc/telegraf.conf
 
-EXPOSE  21
+EXPOSE  21 30000-30002
 
 CMD     supervisord -c /etc/supervisord.conf
