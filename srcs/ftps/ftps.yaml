@@ -8,22 +8,13 @@ metadata:
     run: ftps
 spec:
   type: LoadBalancer
+  loadBalancerIP: 172.17.0.2
   selector:
     run: ftps
   ports:
   - name: ftps
     port: 21
     targetPort: 21
-    protocol: TCP
-  - name: ftps00
-    port: 40000
-    protocol: TCP
-  - name: ftps01
-    port: 20000
-    protocol: TCP
-  - name: ftps02
-    port: 50000
-    protocol: TCP
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -49,9 +40,3 @@ spec:
         ports:
         - containerPort: 21
           name: ftps
-        - containerPort: 40000
-          name: ftps00
-        - containerPort: 20000
-          name: ftps01
-        - containerPort: 50000
-          name: ftps02

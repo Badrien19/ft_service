@@ -30,7 +30,7 @@ echo "\n\033[033mBuilding dockers\033[00m\n"
 
 echo "\033[1;34m[Wordpress]\033[00m"
 docker build -t service_wordpress ./srcs/wordpress
-echo "\033[1;34m[Influxdb]\033[00m"
+echo "\n\033[1;34m[Influxdb]\033[00m"
 docker build -t service_influxdb ./srcs/influxdb
 echo "\n\033[1;34m[Nginx]\033[00m"
 docker build -t service_nginx ./srcs/nginx
@@ -40,7 +40,8 @@ echo "\n\033[1;34m[Mysql]\033[00m"
 docker build -t service_mysql ./srcs/mysql
 echo "\n\033[1;34m[Phpmyadmin]\033[00m"
 docker build -t service_phpmyadmin ./srcs/phpmyadmin
-
+echo "\n\033[1;34m[FTPS]\033[00m"
+docker build -t service_ftps ./srcs/ftps
 
 DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql;
 
@@ -61,6 +62,7 @@ kubectl create -f ./srcs/grafana/grafana.yaml
 kubectl create -f ./srcs/mysql/mysql.yaml
 kubectl create -f ./srcs/wordpress/wordpress.yaml
 kubectl create -f ./srcs/influxdb/influxdb.yaml
+kubectl create -f ./srcs/ftps/ftps.yaml
 
 
 minikube dashboard
