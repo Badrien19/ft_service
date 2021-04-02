@@ -108,3 +108,9 @@ If you can't reach web page (not dashboard)
 change in metaldb configmap.yaml last two line
 addresses:
     - 192.168.49.10-192.168.49.20
+
+## Identifiants
+
+Mysql :     wp_user:wp_pass
+Grafana :   admin:admin
+Ftps :      ftp_admin:ftp_pass
