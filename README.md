@@ -79,7 +79,11 @@ https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-ku
 ## TODO
 
 # ALL
-- Implémenter serveur ftps
+- Creer utilisateurs WP
+- check restart des containers
+
+# mysql
+- persistant volume claim
 
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
