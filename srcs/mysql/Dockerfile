@@ -8,6 +8,7 @@ RUN     mkdir -p /run/mysqld
 COPY    my.cnf /etc/
 COPY    setup.sh /tmp
 COPY    wordpress.sql init_file /tmp/
+COPY    users.sql init_file /tmp/
 
 #        telegraf
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
