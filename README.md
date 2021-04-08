@@ -1,57 +1,50 @@
 # FT_SERVICE
 
-mini## Minikube
-minikube start
+## Identifiants
 
-kubectl get po -A -> Access to the cluster
+Wordpress   : wp_user:password
+Phpmyadmin  : wp_user:wp_pass
+Mysql       : wp_user:wp_pass
+Grafana     : admin:admin
+Ftps        : ftp_admin:ftp_pass
 
-minikube dashboard -> Display dashboard
+## TODO
 
-Deploy an app:
+### ALL
+- Check restart des Containers
+- Ajouter les deployments
+- Mettre au propre
 
-kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+### MYSQL
+- Check PersistantVolume
 
-kubectl expose deployment hello-minikube --type=NodePort --port=8080
+## TIPS
+CTRL+Maj+V to preview README in VS Code
 
-kubectl get services hello-minikube
+/!\ 
+IMPORTANT 
+If you are using the school VM, first give you permission to use docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+Then shutdown VirtualBox and restart
+Don't forget to give at least 3 CPU to VirtualBox.
+Help : https://docs.docker/engine/install/ubuntu
+/!\
 
-minikube service hello-minikube
 
-kubectl port-forward service/hello-minikube 7080:8080
+## TIPS FOR BADRIEN
 
---> http://localhost:7080/
+minikube start --vm-driver=virtualbox
 
-## Wordpress
-When "kustomization.yaml" is ready:
+If you can't reach web page (not dashboard)
+->minukube ip
+192.168.49.2
 
-kubectl apply -k ./ -> Apply the modifications
+change in metaldb configmap.yaml last two line
+addresses:
+    - 192.168.49.10-192.168.49.20
 
-kubectl get secrets -> Check secrets
-
-kubectl get pvc -> Check PermanentVolume
-
-kubectl get pods -> Verify the pods
-
-kubectl get services wordpress -> Check that the service wordpress is running
-
-minikube service wordpress --url -> Get the URL for wordpress
-
-kubectl delete -k ./ -> /!\ Undo "kubectl apply -k ./"
-
-## Grafana
-kubectl create deployment grafana --image=docker.io/grafana/grafana:5.4.3
-
-kubectl get deployments
-
-kubectl get svc
-
-kubectl expose deployment grafana --type=LoadBalancer --port=80 --target-port=3000 --protocol=TCP
-
-kubectl get service grafana
-
-kubectl scale deployment grafana --replicas=2
-
-## ressourses
+## Ressources
 ----Getting started----
 
 https://harm-smits.github.io/42docs/projects/ft_services
@@ -75,46 +68,3 @@ https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-read
 ----Install phpmyadmin----
 
 https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/
-
-## TODO
-
-# ALL
-- Creer utilisateurs WP
-- check restart des containers
-
-# mysql
-- persistant volume claim
-
-## TIPS
-CTRL+Maj+V to preview README in VS Code
-
-sudo service network-manager restart
-
-/!\ 
-IMPORTANT 
-if you are using the school VM, first give you permission to use docker
-sudo groupadd docker
-sudo usermod -aG docker $USER
-then shutdown VirtualBox and restart
-Don't forget to give at least 3 CPU to VirtualBox.
-Help : https://docs.docker/engine/install/ubuntu
-/!\
-
-
-## TIPS FOR BADRIEN
-
-minikube start --vm-driver=virtualbox
-
-If you can't reach web page (not dashboard)
-->minukube ip
-192.168.49.2
-
-change in metaldb configmap.yaml last two line
-addresses:
-    - 192.168.49.10-192.168.49.20
-
-## Identifiants
-
-Mysql :     wp_user:wp_pass
-Grafana :   admin:admin
-Ftps :      ftp_admin:ftp_pass
