@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: minikube
+  labels:
+    app: mysql
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3306
+  selector:
+    app: mysql

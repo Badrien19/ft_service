@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps-deployment
+  labels:
+    app: ftps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ftps
+  template:
+    metadata:
+      labels:
+        app: ftps
+    spec:
+      containers:
+      - name: ftps
+        image: img_ftps
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 21
+          name: ftps
+        - containerPort: 21000
+          name: ftps00
+        - containerPort: 21001
+          name: ftps01
+        - containerPort: 21002
+          name: ftps02
+        - containerPort: 21003
+          name: ftps03
+        volumeMounts:
+        - name: ftps-persistent-storage
+          mountPath: /ftps
+      volumes:
+      - name: ftps-persistent-storage
+        persistentVolumeClaim:
+          claimName: ftps-pvc
