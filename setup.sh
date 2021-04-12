@@ -43,7 +43,7 @@ docker build -t img_phpmyadmin ./srcs/phpmyadmin
 echo "\n\033[1;34m7/7 [FTPS]\033[00m"
 docker build -t img_ftps ./srcs/ftps
 
-DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql;
+DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql-service;
 
 echo "\n\033[033mGenerating secrets\033[00m\n"
 
