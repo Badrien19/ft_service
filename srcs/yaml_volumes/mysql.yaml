@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
   labels:
-    run: mysql
+    app: mysql
 spec:
   accessModes:
     - ReadWriteOnce
