@@ -9,18 +9,18 @@ RUN apk add grafana --repository http://dl-cdn.alpinelinux.org/alpine/edge/commu
 # Supervisor
 RUN apk add --no-cache supervisor
 RUN mkdir -p /var/log/supervisor
-RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-COPY telegraf.conf /etc/telegraf.conf
 
 COPY ./supervisord.conf /etc/
 COPY ./grafana.ini /usr/share/grafana/conf/custom.ini
 COPY ./dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/
 COPY ./influxdb.yaml /usr/share/grafana/conf/provisioning/datasources/
 COPY dashboard/*.json /etc/grafana/provisioning/dashboards/
-COPY telegraf.conf /etc/telegraf.conf
 
+# Install telegraf
+RUN     apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN     mkdir -p /etc/telegraf
+COPY    ./telegraf.conf /etc/telegraf/telegraf.conf
 
 EXPOSE 3000
 
-#COPY telegraf.conf /etc/telegraf.conf
 CMD supervisord

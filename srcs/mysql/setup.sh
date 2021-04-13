@@ -1,3 +1,4 @@
+
 # Setup
 /usr/bin/mysql_install_db --datadir=/var/lib/mysql
 
@@ -8,4 +9,4 @@
 mysql wordpress -u root < tmp/wordpress.sql
 
 # Supervisor
-supervisord
+Supervisord

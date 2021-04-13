@@ -55,27 +55,27 @@ kubectl create secret generic db-id \
 
 echo "\n\033[033mCreating Deployments\033[00m\n"
 
+kubectl create -f ./srcs/yaml_services/ftps.yaml
 kubectl create -f ./srcs/yaml_deployments/ftps.yaml
-kubectl create -f ./srcs/yaml_deployments/grafana.yaml
-kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
-kubectl create -f ./srcs/yaml_deployments/mysql.yaml
-kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
-kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
-
-echo "\n\033[033mCreating Volume Claim\033[00m\n"
-
 kubectl create -f ./srcs/yaml_volumes/ftps.yaml
+
+kubectl create -f ./srcs/yaml_services/grafana.yaml
+kubectl create -f ./srcs/yaml_deployments/grafana.yaml
+
+kubectl create -f ./srcs/yaml_services/influxdb.yaml
+kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
 kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
+
+kubectl create -f ./srcs/yaml_services/mysql.yaml
+kubectl create -f ./srcs/yaml_deployments/mysql.yaml
 kubectl create -f ./srcs/yaml_volumes/mysql.yaml
 
-echo "\n\033[033mCreating Services\033[00m\n"
-
-kubectl create -f ./srcs/yaml_services/ftps.yaml
-kubectl create -f ./srcs/yaml_services/grafana.yaml
-kubectl create -f ./srcs/yaml_services/influxdb.yaml
-kubectl create -f ./srcs/yaml_services/mysql.yaml
 kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
+kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
+
 kubectl create -f ./srcs/yaml_services/wordpress.yaml
+kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
+
 
 echo "\n"
 

@@ -2,5 +2,5 @@ apiVersion: 1
 datasources:
 - name: telegraf
   type: influxdb
-  url: http://influxdb:8086/
+  url: http://influxdb-service:8086/
   database: telegraf
