@@ -9,9 +9,9 @@ COPY    my.cnf /etc/
 COPY    setup.sh /tmp
 COPY    wordpress.sql init_file /tmp/
 
-#        telegraf
-RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-COPY telegraf.conf /etc/telegraf.conf
+#       Telegraf
+RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY    telegraf.conf /etc/telegraf.conf
 
 #       Supervisor
 RUN     mkdir -p /var/log/supervisor
