@@ -88,4 +88,5 @@ kubectl create -f ./srcs/yaml_deployments/nginx.yaml
 
 echo "\n"
 
+echo "\n\033[033mStarting Dashboard\033[00m\n"
 minikube dashboard
