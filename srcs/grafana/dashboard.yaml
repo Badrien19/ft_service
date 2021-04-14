@@ -1,4 +1,3 @@
-
 apiVersion: 1
 
 providers:
@@ -9,4 +8,4 @@ providers:
   disableDeletion: true
   editable: false
   options:
-    path: /etc/grafana/provisioning/dashboards/
+    path: /usr/share/grafana/conf/provisioning/dashboards
