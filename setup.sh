@@ -9,7 +9,7 @@ echo "
 echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
-minikube start --vm-driver=docker --memory 3200m --cpus 3
+minikube start --vm-driver=virtualbox --memory 3200m --cpus 4
 #minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
@@ -66,9 +66,9 @@ kubectl create -f ./srcs/yaml_services/influxdb.yaml
 kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
 kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
 
+kubectl create -f ./srcs/yaml_volumes/mysql.yaml
 kubectl create -f ./srcs/yaml_services/mysql.yaml
 kubectl create -f ./srcs/yaml_deployments/mysql.yaml
-kubectl create -f ./srcs/yaml_volumes/mysql.yaml
 
 kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
 kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
@@ -76,6 +76,8 @@ kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
 kubectl create -f ./srcs/yaml_services/wordpress.yaml
 kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
 
+kubectl create -f ./srcs/yaml_services/nginx.yaml
+kubectl create -f ./srcs/yaml_deployments/nginx.yaml
 
 echo "\n"
 
