@@ -9,7 +9,7 @@ echo "
 echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
-minikube start --vm-driver=docker --memory 3200m --cpus 3
+minikube start --vm-driver=docker --memory 4600m --cpus 4
 #minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
@@ -21,7 +21,7 @@ echo "\n\033[033mConfiguring Metallb\033[00m\n"
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-kubectl create -f srcs/metallb/configmap.yaml
+kubectl create -f srcs/yaml_metallb/metallb.yaml
 
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
@@ -29,40 +29,44 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 echo "\n\033[033mBuilding dockers\033[00m\n"
 
 echo "\033[1;34m1/7 [Wordpress]\033[00m"
-docker build -t service_wordpress ./srcs/wordpress
+docker build -t img_wordpress ./srcs/wordpress
 echo "\n\033[1;34m2/7 [Influxdb]\033[00m"
-docker build -t service_influxdb ./srcs/influxdb
+docker build -t img_influxdb ./srcs/influxdb
 echo "\n\033[1;34m3/7 [Nginx]\033[00m"
-docker build -t service_nginx ./srcs/nginx
+docker build -t img_nginx ./srcs/nginx
 echo "\n\033[1;34m4/7 [Grafana]\033[00m"
-docker build -t service_grafana ./srcs/grafana
+docker build -t img_grafana ./srcs/grafana
 echo "\n\033[1;34m5/7 [Mysql]\033[00m"
-docker build -t service_mysql ./srcs/mysql
+docker build -t img_mysql ./srcs/mysql
 echo "\n\033[1;34m6/7 [Phpmyadmin]\033[00m"
-docker build -t service_phpmyadmin ./srcs/phpmyadmin
+docker build -t img_phpmyadmin ./srcs/phpmyadmin
 echo "\n\033[1;34m7/7 [FTPS]\033[00m"
-docker build -t service_ftps ./srcs/ftps
+docker build -t img_ftps ./srcs/ftps
 
-DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql;
+echo "\n\033[033mCreating Deployments\033[00m\n"
+kubectl create -f ./srcs/yaml_deployments/ftps.yaml
+kubectl create -f ./srcs/yaml_deployments/grafana.yaml
+kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
+kubectl create -f ./srcs/yaml_deployments/mysql.yaml
+kubectl create -f ./srcs/yaml_deployments/nginx.yaml
+kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
+kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
 
-echo "\n\033[033mGenerating secrets\033[00m\n"
+echo "\n\033[033mCreating VolumeClaim\033[00m\n"
+kubectl create -f ./srcs/yaml_volumes/ftps.yaml
+kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
+kubectl create -f ./srcs/yaml_volumes/mysql.yaml
 
-kubectl create secret generic db-id \
-	--from-literal=name=${DB_NAME} \
-	--from-literal=user=${DB_USER} \
-	--from-literal=password=${DB_PASSWORD} \
-	--from-literal=host=${DB_HOST}l
+echo "\n\033[033mCreating Services\033[00m\n"
+kubectl create -f ./srcs/yaml_services/ftps.yaml
+kubectl create -f ./srcs/yaml_services/grafana.yaml
+kubectl create -f ./srcs/yaml_services/influxdb.yaml
+kubectl create -f ./srcs/yaml_services/mysql.yaml
+kubectl create -f ./srcs/yaml_services/nginx.yaml
+kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
+kubectl create -f ./srcs/yaml_services/wordpress.yaml
 
+echo "\n"
 
-echo "\n\033[033mImporting config files\033[00m\n"
-
-kubectl create -f ./srcs/nginx/nginx.yaml
-kubectl create -f ./srcs/phpmyadmin/phpmyadmin.yaml
-kubectl create -f ./srcs/grafana/grafana.yaml
-kubectl create -f ./srcs/mysql/mysql.yaml
-kubectl create -f ./srcs/wordpress/wordpress.yaml
-kubectl create -f ./srcs/influxdb/influxdb.yaml
-kubectl create -f ./srcs/ftps/ftps.yaml
-
-
+echo "\n\033[033mStarting Dashboard\033[00m\n"
 minikube dashboard

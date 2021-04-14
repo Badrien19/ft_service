@@ -1,3 +1,5 @@
+telegraf --config /etc/telegraf.conf &
+
 # Setup
 /usr/bin/mysql_install_db --datadir=/var/lib/mysql
 
@@ -7,5 +9,4 @@
 # Initialize DB
 mysql wordpress -u root < tmp/wordpress.sql
 
-# Supervisor
-supervisord
+tail -f /dev/null

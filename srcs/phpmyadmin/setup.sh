@@ -1,3 +1,3 @@
-sed s/__DB_HOST__/$DB_HOST/g /var/www/phpmyadmin/config.inc.php -i
+telegraf --config /etc/telegraf.conf &
 
-supervisord
+php -S 0.0.0.0:5000 -t var/www/phpmyadmin

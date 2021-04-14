@@ -1,21 +1,17 @@
 FROM    alpine:3.12
 
 RUN     apk update \
-        && apk add --no-cache supervisor \
         && apk add --no-cache mysql mysql-client
 
 RUN     mkdir -p /run/mysqld
+RUN     mkdir -p /var/log/mysql/
 COPY    my.cnf /etc/
 COPY    setup.sh /tmp
 COPY    wordpress.sql init_file /tmp/
 
-#        telegraf
-RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-COPY telegraf.conf /etc/telegraf.conf
-
-#       Supervisor
-RUN     mkdir -p /var/log/supervisor
-COPY    ./supervisord.conf /etc/
+#       Telegraf
+RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY    telegraf.conf /etc/telegraf.conf
 
 EXPOSE  3306
 

@@ -1,17 +1,15 @@
-FROM    alpine:3.12
+FROM	alpine:3.12
 
-RUN     apk update && apk add influxdb
-RUN     apk add --no-cache supervisor
-RUN     apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY	setup.sh ./
 
-RUN     mkdir -p /etc/telegraf
-COPY    ./telegraf.conf /etc/telegraf/telegraf.conf
-COPY    influxdb.sh /influxdb.sh
-RUN     chmod +x /influxdb.sh
+# 		Install influxdb and dependencies
+RUN 	apk update && \
+		apk add --no-cache influxdb
 
-RUN     mkdir -p /var/log/supervisor
-COPY    ./supervisord.conf /etc/
+# 		Install telegraf
+RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY    telegraf.conf /etc/telegraf.conf
 
-EXPOSE  8086
+EXPOSE 	8086
 
-CMD     ./influxdb.sh
+CMD 	./setup.sh
