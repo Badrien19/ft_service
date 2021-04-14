@@ -1,15 +1,14 @@
-FROM alpine:latest
+FROM alpine:3.12
 
-COPY telegraf.conf setup.sh ./
+COPY setup.sh ./
 
 # Install influxdb and dependencies
 RUN apk update && \
 	apk add --no-cache influxdb
 
 # Install telegraf
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \
-	mkdir -p /etc/telegraf && \
-	mv telegraf.conf /etc/telegraf/
+RUN     apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+COPY    telegraf.conf /etc/telegraf.conf
 
 EXPOSE 8086
 
