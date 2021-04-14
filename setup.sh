@@ -9,7 +9,7 @@ echo "
 echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
-minikube start --vm-driver=docker --memory 3200m --cpus 3
+minikube start --vm-driver=docker --memory 4600m --cpus 4
 #minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
@@ -43,48 +43,28 @@ docker build -t img_phpmyadmin ./srcs/phpmyadmin
 echo "\n\033[1;34m7/7 [FTPS]\033[00m"
 docker build -t img_ftps ./srcs/ftps
 
-DB_NAME=BOURDANNE_DB; DB_USER=BOURDANNE; DB_PASSWORD=password; DB_HOST=mysql-service;
-
-echo "\n\033[033mGenerating secrets\033[00m\n"
-
-kubectl create secret generic db-id \
-	--from-literal=name=${DB_NAME} \
-	--from-literal=user=${DB_USER} \
-	--from-literal=password=${DB_PASSWORD} \
-	--from-literal=host=${DB_HOST}l
-
 echo "\n\033[033mCreating Deployments\033[00m\n"
-
-echo "\n\033[1;34m1/7 [FTPS]\033[00m"
-kubectl create -f ./srcs/yaml_services/ftps.yaml
 kubectl create -f ./srcs/yaml_deployments/ftps.yaml
-kubectl create -f ./srcs/yaml_volumes/ftps.yaml
-
-echo "\n\033[1;34m2/7 [Grafana]\033[00m"
-kubectl create -f ./srcs/yaml_services/grafana.yaml
 kubectl create -f ./srcs/yaml_deployments/grafana.yaml
-
-echo "\n\033[1;34m3/7 [InfluxDB]\033[00m"
-kubectl create -f ./srcs/yaml_services/influxdb.yaml
 kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
-kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
-
-echo "\n\033[1;34m4/7 [Mysql]\033[00m"
-kubectl create -f ./srcs/yaml_volumes/mysql.yaml
-kubectl create -f ./srcs/yaml_services/mysql.yaml
 kubectl create -f ./srcs/yaml_deployments/mysql.yaml
-
-echo "\n\033[1;34m5/7 [Phpmyadmin]\033[00m"
-kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
+kubectl create -f ./srcs/yaml_deployments/nginx.yaml
 kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
-
-echo "\n\033[1;34m6/7 [Wordpress]\033[00m"
-kubectl create -f ./srcs/yaml_services/wordpress.yaml
 kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
 
-echo "\n\033[1;34m7/7 [Nginx]\033[00m"
+echo "\n\033[033mCreating VolumeClaim\033[00m\n"
+kubectl create -f ./srcs/yaml_volumes/ftps.yaml
+kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
+kubectl create -f ./srcs/yaml_volumes/mysql.yaml
+
+echo "\n\033[033mCreating Services\033[00m\n"
+kubectl create -f ./srcs/yaml_services/ftps.yaml
+kubectl create -f ./srcs/yaml_services/grafana.yaml
+kubectl create -f ./srcs/yaml_services/influxdb.yaml
+kubectl create -f ./srcs/yaml_services/mysql.yaml
 kubectl create -f ./srcs/yaml_services/nginx.yaml
-kubectl create -f ./srcs/yaml_deployments/nginx.yaml
+kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
+kubectl create -f ./srcs/yaml_services/wordpress.yaml
 
 echo "\n"
 

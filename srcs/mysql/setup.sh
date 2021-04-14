@@ -1,4 +1,4 @@
-#telegraf --config /etc/telegraf.conf &
+telegraf --config /etc/telegraf.conf &
 
 # Setup
 /usr/bin/mysql_install_db --datadir=/var/lib/mysql
