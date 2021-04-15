@@ -9,7 +9,7 @@ echo "
 echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
-minikube start --vm-driver=docker --memory 4600m --cpus 4
+minikube start --vm-driver=docker --memory 2600m --cpus 3
 #minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
