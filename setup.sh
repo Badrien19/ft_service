@@ -9,7 +9,7 @@ echo "
 echo "\033[033mStarting Minikube\033[00m\n"
 
 minikube delete
-minikube start --vm-driver=docker --memory 2600m --cpus 3
+minikube start --vm-driver=docker --memory 5000m --cpus 4
 #minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 
@@ -65,8 +65,6 @@ kubectl create -f ./srcs/yaml_services/mysql.yaml
 kubectl create -f ./srcs/yaml_services/nginx.yaml
 kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
 kubectl create -f ./srcs/yaml_services/wordpress.yaml
-
-echo "\n"
 
 echo "\n\033[033mStarting Dashboard\033[00m\n"
 minikube dashboard
