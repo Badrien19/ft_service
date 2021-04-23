@@ -13,9 +13,8 @@ Ftps        | ftp_admin | ftp_pass
 ## TODO
 
 ### ALL
-- Check restart des Containers
-- Ajouter les deployments
-- Mettre au propre
+- restart lorsqu on kill un telegraf
+
 
 ### MYSQL
 - Check PersistantVolume
