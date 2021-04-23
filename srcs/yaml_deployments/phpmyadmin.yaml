@@ -20,11 +20,11 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
-        livenessProbe:
-          exec:
-            command:
-            - /bin/ash
-            - -c
-            - 'pgrep telegraf && pgrep php'
-          initialDelaySeconds: 10
-          periodSeconds: 5
+          livenessProbe:
+            exec:
+              command:
+              - /bin/ash
+              - -c
+              - 'pgrep telegraf && pgrep php'
+            initialDelaySeconds: 10
+            periodSeconds: 5

@@ -23,3 +23,11 @@ spec:
           name: http
         - containerPort: 443
           name: https
+        livenessProbe:
+            exec:
+              command:
+              - /bin/ash
+              - -c
+              - 'pgrep telegraf && pgrep nginx'
+            initialDelaySeconds: 10
+            periodSeconds: 5
