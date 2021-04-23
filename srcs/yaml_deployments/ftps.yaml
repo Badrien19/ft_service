@@ -32,6 +32,14 @@ spec:
         volumeMounts:
         - name: ftps-persistent-storage
           mountPath: /ftps
+      livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep pure-ftp'
+          initialDelaySeconds: 10
+          periodSeconds: 5
       volumes:
       - name: ftps-persistent-storage
         persistentVolumeClaim:

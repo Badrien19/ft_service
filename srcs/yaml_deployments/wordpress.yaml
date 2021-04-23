@@ -21,3 +21,11 @@ spec:
         ports:
         - containerPort: 5050
           name: https
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep php'
+          initialDelaySeconds: 10
+          periodSeconds: 5
