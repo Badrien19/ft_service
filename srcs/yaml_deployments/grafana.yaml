@@ -26,5 +26,5 @@ spec:
             - /bin/ash
             - -c
             - 'pgrep telegraf && pgrep grafana-server'
-          initialDelaySeconds: 10
-          periodSeconds: 5
+          initialDelaySeconds: 20
+          periodSeconds: 10
