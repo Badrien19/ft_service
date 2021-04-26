@@ -19,7 +19,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "InfluxDB",
+      "datasource": "Wordpress",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -107,7 +107,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "Wordpress",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -200,7 +200,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Wordpress",
       "fieldConfig": {
         "defaults": {
           "custom": {}

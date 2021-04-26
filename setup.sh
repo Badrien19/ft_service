@@ -21,7 +21,7 @@ echo "\n\033[033mConfiguring Metallb\033[00m\n"
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-kubectl create -f srcs/yaml_metallb/metallb.yaml
+kubectl apply -f srcs/yaml_metallb/metallb.yaml
 
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
@@ -44,27 +44,27 @@ echo "\n\033[1;34m7/7 [FTPS]\033[00m"
 docker build -t img_ftps ./srcs/ftps
 
 echo "\n\033[033mCreating Deployments\033[00m\n"
-kubectl create -f ./srcs/yaml_deployments/ftps.yaml
-kubectl create -f ./srcs/yaml_deployments/grafana.yaml
-kubectl create -f ./srcs/yaml_deployments/influxdb.yaml
-kubectl create -f ./srcs/yaml_deployments/mysql.yaml
-kubectl create -f ./srcs/yaml_deployments/nginx.yaml
-kubectl create -f ./srcs/yaml_deployments/phpmyadmin.yaml
-kubectl create -f ./srcs/yaml_deployments/wordpress.yaml
+kubectl apply -f ./srcs/yaml_deployments/ftps.yaml
+kubectl apply -f ./srcs/yaml_deployments/grafana.yaml
+kubectl apply -f ./srcs/yaml_deployments/influxdb.yaml
+kubectl apply -f ./srcs/yaml_deployments/mysql.yaml
+kubectl apply -f ./srcs/yaml_deployments/nginx.yaml
+kubectl apply -f ./srcs/yaml_deployments/phpmyadmin.yaml
+kubectl apply -f ./srcs/yaml_deployments/wordpress.yaml
 
 echo "\n\033[033mCreating VolumeClaim\033[00m\n"
-kubectl create -f ./srcs/yaml_volumes/ftps.yaml
-kubectl create -f ./srcs/yaml_volumes/influxdb.yaml
-kubectl create -f ./srcs/yaml_volumes/mysql.yaml
+kubectl apply -f ./srcs/yaml_volumes/ftps.yaml
+kubectl apply -f ./srcs/yaml_volumes/influxdb.yaml
+kubectl apply -f ./srcs/yaml_volumes/mysql.yaml
 
 echo "\n\033[033mCreating Services\033[00m\n"
-kubectl create -f ./srcs/yaml_services/ftps.yaml
-kubectl create -f ./srcs/yaml_services/grafana.yaml
-kubectl create -f ./srcs/yaml_services/influxdb.yaml
-kubectl create -f ./srcs/yaml_services/mysql.yaml
-kubectl create -f ./srcs/yaml_services/nginx.yaml
-kubectl create -f ./srcs/yaml_services/phpmyadmin.yaml
-kubectl create -f ./srcs/yaml_services/wordpress.yaml
+kubectl apply -f ./srcs/yaml_services/ftps.yaml
+kubectl apply -f ./srcs/yaml_services/grafana.yaml
+kubectl apply -f ./srcs/yaml_services/influxdb.yaml
+kubectl apply -f ./srcs/yaml_services/mysql.yaml
+kubectl apply -f ./srcs/yaml_services/nginx.yaml
+kubectl apply -f ./srcs/yaml_services/phpmyadmin.yaml
+kubectl apply -f ./srcs/yaml_services/wordpress.yaml
 
 echo "\n\033[033mStarting Dashboard\033[00m\n"
 minikube dashboard

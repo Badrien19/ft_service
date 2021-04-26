@@ -18,7 +18,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "InfluxDB",
+      "datasource": "nginx",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -106,7 +106,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "nginx",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -199,7 +199,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "nginx",
       "fieldConfig": {
         "defaults": {
           "custom": {}
