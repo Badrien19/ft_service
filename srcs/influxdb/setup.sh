@@ -1,5 +1,5 @@
 # Start telegraf
-/usr/bin/telegraf &
+/usr/bin/telegraf --config /etc/telegraf/telegraf.conf &
 
 # Start influxdb
 /usr/sbin/influxd & sleep 3

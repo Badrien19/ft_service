@@ -17,6 +17,14 @@ datasources:
   user: admin
   password: admin
 
+- name: InfluxDB
+  type: influxdb
+  access: proxy
+  url: http://influxdb-service:8086
+  database: InfluxDB
+  user: admin
+  password: admin
+
 - name: mysql
   type: influxdb
   access: proxy
