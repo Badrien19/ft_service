@@ -23,7 +23,7 @@ spec:
           name: https
         volumeMounts:
         - name: influxdb-persistent-storage
-          mountPath: /var/lib/influxdb
+          mountPath: /root
         livenessProbe:
           exec:
             command:
