@@ -10,15 +10,6 @@ Mysql       | wp_user | wp_pass
 Grafana     | admin | admin  
 Ftps        | ftp_admin | ftp_pass
 
-## TODO
-
-### ALL
-- restart lorsqu on kill un telegraf
-
-
-### MYSQL
-- Check PersistantVolume
-
 ## TIPS
 CTRL+Maj+V to preview README in VS Code
 
@@ -44,30 +35,3 @@ If you can't reach web page (not dashboard)
 change in metaldb configmap.yaml last two line  
 addresses:  
     - 192.168.49.10-192.168.49.20
-
----
-
-## Ressources
-----Getting started----
-
-https://harm-smits.github.io/42docs/projects/ft_services
-
-----Install minikube----
-
-https://minikube.sigs.k8s.io/docs/start/
-
-----Install wordpress & mysql----
-
-https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
-
-----Install graphana---
-
-https://www.metricfire.com/blog/deploying-grafana-to-kubernetes/?GAID=1300009325.1613665265
-
-----liveness----
-
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-
-----Install phpmyadmin----
-
-https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/
