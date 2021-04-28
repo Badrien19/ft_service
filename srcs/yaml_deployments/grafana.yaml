@@ -21,7 +21,10 @@ spec:
         ports:
         - containerPort: 3000
         livenessProbe:
-            tcpSocket:
-              port: 3000
+            exec:
+              command:
+              - /bin/ash
+              - -c
+              - 'pgrep telegraf && pgrep grafana-server'
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
