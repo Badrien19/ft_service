@@ -26,6 +26,6 @@ spec:
             command:
             - /bin/ash
             - -c
-            - 'pgrep telegraf && pgrep php'
+            - 'pgrep telegraf && pgrep php && pgrep nginx'
           initialDelaySeconds: 10
           periodSeconds: 5

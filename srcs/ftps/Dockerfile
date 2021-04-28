@@ -5,9 +5,10 @@ RUN     apk update
 RUN     apk add openssl pure-ftpd --repository=http://dl-3.alpinelinux.org/alpine/edge/testing/
 
 #       Adding User (ftp_admin:ftp_pass)
-RUN     mkdir -p /mnt/ftp/doss/
-RUN     echo "Hello There" > /mnt/ftp/doss/file
+RUN     mkdir -p /mnt/ftp/
+RUN     echo "Hello There" > /mnt/ftp/file
 RUN     adduser --home=/mnt/ftp -D ftp_admin && echo "ftp_admin:ftp_pass" | chpasswd
+RUN     chown -R ftp_admin:ftp_admin /mnt/ftp/
 
 #       SSL
 RUN     mkdir -p /etc/ssl/
